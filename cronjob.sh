@@ -6,7 +6,7 @@ export BK_YEAR=`date '+%Y'`
 export BK_MONTH=`date '+%m'`
 export BK_DAY=`date '+%d'`
 export BK_SUFFIX=`date '+%Y%m%d-%H%M%S'`
-VM_NAME=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/hostname | cut -d. -f1)
+VM_NAME=$(curl -H Metadata-Flavor:Google http://metadata.google.internal/computeMetadata/v1/instance/hostname | cut -d. -f1)
 echo VM_NAME $VM_NAME
 CONTAINER_ID=$(docker ps  | grep $CONTAINER_NAME | cut -d' ' -f1)
 echo CONTAINER_ID $CONTAINER_ID
