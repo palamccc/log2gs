@@ -5,3 +5,7 @@ RUN apk add --no-cache wget ca-certificates gzip \
   && tar -xvf docker*.tgz \
   && mv docker/docker /usr/local/bin \
   && rm -rf /tmp/*
+COPY ./cronjob.sh /usr/local/bin/cronjob.sh
+RUN chmod +x /usr/local/bin/cronjob.sh
+RUN echo '* * * * * /usr/local/bin/cronjob.sh' > /etc/crontabs/root
+CMD [ "crond", "-f" ]
