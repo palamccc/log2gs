@@ -15,5 +15,6 @@ echo output file $JSON_FILE
 mv /logs/logs.json /logs/$JSON_FILE
 docker kill --signal=USR1 $CONTAINER_ID
 gzip /logs/$JSON_FILE
+gcloud auth activate-service-account --key-file=/gcloud-auth.json
 gsutil cp /logs/$JSON_FILE.gz gs://$BK_BUCKET/$BK_YEAR/$BK_MONTH/$BK_DAY/
 rm /logs/$JSON_FILE.gz
