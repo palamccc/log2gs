@@ -7,5 +7,5 @@ RUN apk add --no-cache curl ca-certificates \
   && rm -rf /tmp/*
 COPY ./cronjob.sh /usr/local/bin/cronjob.sh
 RUN chmod +x /usr/local/bin/cronjob.sh
-RUN echo '*/5 * * * * /usr/local/bin/cronjob.sh' > /etc/crontabs/root
+RUN echo '0 1 * * * /usr/local/bin/cronjob.sh' > /etc/crontabs/root
 CMD [ "crond", "-f" ]
